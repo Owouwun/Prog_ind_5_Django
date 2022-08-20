@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add chemical</title>
+</head>
+
+<body>
+    <form method="POST" action="/index/">
+        {% csrf_token %}
+        <input type="text" name="object" value="chemical" style="display: none">
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name"/>
+        </p>
+        <p>
+            <label>Choose the class</label><br>
+            <select name="class">
+                {% for class in classes %}
+                    <option value="{{ class.id }}">{{ class.Name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label>Choose the color</label><br>
+            <select name="color">
+                {% for color in colors %}
+                    <option value="{{ color.id }}">{{ color.Name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

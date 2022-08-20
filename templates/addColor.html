@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add color</title>
+</head>
+
+<body>
+    <form method="POST" action="/index/">
+        {% csrf_token %}
+        <input type="text" name="object" value="color" style="display: none">
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name"/>
+        </p>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

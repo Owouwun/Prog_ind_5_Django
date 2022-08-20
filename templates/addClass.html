@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add class</title>
+</head>
+
+<body>
+    <form method="POST" action="/index/">
+        {% csrf_token %}
+        <input type="text" name="object" value="class" style="display: none">
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name"/>
+        </p>
+        <p>
+            <label>Is class organic?</label><br>
+            <input type="radio" id="0" name="organic" value="0"/>
+            <label for="0">Non-organic</label>
+            <input type="radio" id="1" name="organic" value="1"/>
+            <label for="1">Organic</label>
+        </p>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

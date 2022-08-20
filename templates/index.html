@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Chemicals</h2>
+    <table border="1px">
+        <tr><th>Name</th><th>Class</th><th>Color</th></tr>
+        {% for chem in chemicals %}
+        <tr>
+            <td>{{ chem.Name }}</td>
+            <td>{{ chem.Class.Name }}</td>
+            <td>{{ chem.Color.Name }}</td>
+            <td>
+                <form action="/index/" method="post">
+                    {% csrf_token %}
+                    <button name="deleteChemical" value="{{ chem.id }}">†</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/addChemical"><button>Add Chemical</button></form>
+
+    <h2>Classes</h2>
+    <table border="1px">
+        <tr><th>Name</th><th>Organic</th></tr>
+        {% for class in classes %}
+        <tr>
+            <td>{{ class.Name }}</td>
+            {% if class.Organic %}
+                <td>Organic</td>
+            {% else %}
+                <td>Non-organic</td>
+            {% endif %}
+            <td>
+                <form action="/index/" method="post">
+                    {% csrf_token %}
+                    <button name="deleteClass" value="{{ class.id }}">†</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/addClass"><button>Add Class</button></form>
+
+    <h2>Colors</h2>
+    <table border="1px">
+        <tr><th>Name</th></tr>
+        {% for color in colors %}
+        <tr>
+            <td>{{ color.Name }}</td>
+            <td>
+                <form action="/index/" method="post">
+                    {% csrf_token %}
+                    <button name="deleteColor" value="{{ color.id }}">†</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/addColor"><button>Add Color</button></form>
+
+    <form action="/readXML"><button>Read XML</button></form>
+    <form action="/writeXML"><button>Write XML</button></form>
+
+    <p>{{ message }}</p>
+</body>
+</html>
